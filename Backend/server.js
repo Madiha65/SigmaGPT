@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://your-vercel-app.vercel.app"
+    "https://sigma-gpt-ho5t.vercel.app/signup"
   ],
   credentials: true
 }));
