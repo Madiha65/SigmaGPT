@@ -9,6 +9,8 @@ import chatRoutes from "./routes/chat.js";
 
 
 const app = express();
+
+console.log("NEW SERVER DEPLOYED");
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
