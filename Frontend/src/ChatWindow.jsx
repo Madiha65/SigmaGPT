@@ -23,82 +23,6 @@ function ChatWindow() {
     const API_URL = import.meta.env.VITE_API_URL;
     const { theme, toggleTheme } = useContext(ThemeContext);
 
-
-    // const sendVoiceMessage = async (message) => {
-
-    //     setLoading(true);
-    //     setNewChat(false);
-
-    //     try {
-
-    //         const response = await fetch(`${API_URL}/api/chat`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             },
-    //             body: JSON.stringify({
-    //                 message,
-    //                 threadId: currThreadId
-    //             })
-    //         });
-
-    //         const res = await response.json();
-
-    //         setReply(res.reply);
-
-    //         speak(res.reply);
-
-    //         setPrevChats(prev => [
-    //             ...prev,
-    //             {
-    //                 role: "user",
-    //                 content: message
-    //             },
-    //             {
-    //                 role: "assistant",
-    //                 content: res.reply
-    //             }
-    //         ]);
-
-    //         setPrompt("");
-
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-
-    //     setLoading(false);
-    // };
-
-    // ===========================
-    // Voice Input (Speech to Text)
-    // ===========================
-    // const startListening = () => {
-    //     const SpeechRecognition =
-    //         window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    //     if (!SpeechRecognition) {
-    //         alert("Speech Recognition is not supported in this browser.");
-    //         return;
-    //     }
-
-    //     const recognition = new SpeechRecognition();
-
-    //     recognition.lang = "en-US";
-    //     recognition.interimResults = false;
-    //     recognition.maxAlternatives = 1;
-
-    //     recognition.start();
-
-    //     recognition.onresult = (event) => {
-    //         const transcript = event.results[0][0].transcript;
-    //         setPrompt(transcript);
-    //     };
-
-    //     recognition.onerror = (event) => {
-    //         console.log(event.error);
-    //     };
-    // };
-
     const startListening = () => {
         const SpeechRecognition =
             window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -240,6 +164,13 @@ function ChatWindow() {
         setIsOpen(!isOpen);
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        window.location.href = "/login";
+    };
+
     return (
         <div className="chatWindow">
 
@@ -283,8 +214,11 @@ function ChatWindow() {
                         &nbsp; Upgrade Plan
                     </div>
 
-                    <div className="dropDownItem">
-                        <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    <div
+                        className="dropDownItem"
+                        onClick={handleLogout}
+                    >
+                        <i className="fa-solid fa-right-from-bracket"></i>
                         &nbsp; Logout
                     </div>
 

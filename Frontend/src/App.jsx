@@ -1,35 +1,76 @@
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { v1 as uuidv1 } from "uuid";
+
+// Components
 import Sidebar from "./Sidebar.jsx";
 import ChatWindow from "./ChatWindow.jsx";
-import {MyContext} from "./MyContext.jsx";
-import { useState } from 'react';
-import {v1 as uuidv1} from "uuid";
+
+// Context
+import { MyContext } from "./MyContext.jsx";
+
+// Pages
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+
+// Protected Route
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   const [prompt, setPrompt] = useState("");
   const [reply, setReply] = useState(null);
   const [currThreadId, setCurrThreadId] = useState(uuidv1());
-  const [prevChats, setPrevChats] = useState([]); 
+  const [prevChats, setPrevChats] = useState([]);
   const [newChat, setNewChat] = useState(true);
   const [allThreads, setAllThreads] = useState([]);
 
   const providerValues = {
-    prompt, setPrompt,
-    reply, setReply,
-    currThreadId, setCurrThreadId,
-    newChat, setNewChat,
-    prevChats, setPrevChats,
-    allThreads, setAllThreads
-  }; 
+    prompt,
+    setPrompt,
+
+    reply,
+    setReply,
+
+    currThreadId,
+    setCurrThreadId,
+
+    newChat,
+    setNewChat,
+
+    prevChats,
+    setPrevChats,
+
+    allThreads,
+    setAllThreads,
+  };
 
   return (
-    <div className='app'>
-      <MyContext.Provider value={providerValues}>
-          <Sidebar></Sidebar>
-          <ChatWindow></ChatWindow>
-        </MyContext.Provider>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        {/* LOGIN */}
+        <Route path="/login" element={<Login />} />
+
+        {/* SIGNUP */}
+        <Route path="/signup" element={<Signup />} />
+
+        {/* PROTECTED CHAT APP */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <MyContext.Provider value={providerValues}>
+                <div className="app">
+                  <Sidebar />
+                  <ChatWindow />
+                </div>
+              </MyContext.Provider>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

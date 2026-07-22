@@ -1,0 +1,370 @@
+/* =================================
+   AUTH PAGE
+================================= */
+
+.auth-container {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =================================
+   BACKGROUND VIDEO
+================================= */
+
+.auth-background-video {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+  filter: blur(2px);
+
+  transform: scale(1.04);
+}
+
+
+/* =================================
+   DARK / BLUR OVERLAY
+================================= */
+
+.auth-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 10, 60, 0.65),
+      rgba(90, 20, 100, 0.45)
+    );
+
+  backdrop-filter: blur(5px);
+}
+
+
+/* =================================
+   GLASS AUTH CARD
+================================= */
+
+.auth-card {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 340px;
+
+  padding: 38px 34px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 8px 35px rgba(0, 0, 0, 0.25);
+
+  color: white;
+}
+
+
+/* =================================
+   HEADING
+================================= */
+
+.auth-card h2 {
+  margin: 0 0 35px;
+
+  text-align: center;
+
+  color: white;
+
+  font-size: 32px;
+
+  font-weight: 700;
+}
+
+
+
+/* =================================
+   INPUT GROUP
+================================= */
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+/* Input field */
+.input-group input {
+  width: 100%;
+  height: 45px;
+
+  box-sizing: border-box;
+
+  padding: 12px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  font-size: 15px;
+
+  transition: all 0.25s ease;
+}
+
+/* Placeholder */
+.input-group input::placeholder {
+  color: transparent;
+}
+
+/* Label */
+.input-group label {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  padding: 0 5px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+}
+
+/* Label moves up */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: 0;
+
+  transform: translateY(-50%);
+
+  background: rgba(70, 60, 100, 0.95);
+
+  color: white;
+
+  font-size: 12px;
+}
+
+/* Focus field */
+.input-group input:focus {
+  border-color: white;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+/* Autofill fix */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* =================================
+   LOGIN OPTIONS
+================================= */
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: white;
+
+  font-size: 13px;
+}
+
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-options input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+
+  accent-color: white;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+.auth-card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 360px;
+
+  padding: 40px 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 18px;
+
+  background: rgba(80, 75, 110, 0.45);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+  color: white;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.auth-card form button {
+  display: block;
+
+  width: 75%;
+  margin: 0 auto;
+
+  padding: 13px 25px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: white;
+  color: #222;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.auth-card form button:hover {
+  background: #eeeeee;
+  transform: translateY(-2px);
+}
+
+
+/* =================================
+   ERROR / SUCCESS MESSAGE
+================================= */
+
+.message {
+  min-height: 18px;
+
+  margin: 15px 0 0;
+
+  text-align: center;
+
+  color: #ffb4b4;
+
+  font-size: 14px;
+}
+
+
+/* =================================
+   LOGIN / SIGNUP SWITCH
+================================= */
+.switch-auth {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 20px;
+
+  color: white;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+}
+
+.switch-auth button {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.switch-auth button:hover {
+  text-decoration: underline;
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 500px) {
+
+  .auth-card {
+    max-width: 100%;
+
+    padding: 32px 24px;
+  }
+
+  .auth-card h2 {
+    font-size: 28px;
+  }
+
+  .login-options {
+    font-size: 12px;
+  }
+}

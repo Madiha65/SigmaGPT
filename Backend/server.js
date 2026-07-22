@@ -2,7 +2,11 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
+
+
+import authRoutes from "./routes/auth.js";
 import chatRoutes from "./routes/chat.js";
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -10,7 +14,14 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
+
+// Authentication routes
+app.use("/api/auth", authRoutes);
+
+// Chat routes
 app.use("/api", chatRoutes);
+
+
 
 const connectDB = async () => {
     try {
