@@ -1,42 +1,158 @@
 .sidebar {
-    background:var(--sidebar);
-  color:var(--text);
-    height: 100vh;
     width: 320px;
+    height: 100vh;
+    background: var(--sidebar);
+    color: var(--text);
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
+    overflow: hidden;
 }
 
+/* ===================== */
+/* Top Button */
+/* ===================== */
 
 button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
-    background-color: transparent;
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
+
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.2);
+
+    background: transparent;
     cursor: pointer;
+
+    flex-shrink: 0;
 }
 
-.logo {
+button:hover {
+    background: rgba(255,255,255,.05);
+}
+
+.logo{
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:#fff;
+    object-fit:cover;
+}
+
+button span{
+    font-size:20px;
+}
+
+/* ===================== */
+/* Chat History */
+/* ===================== */
+
+.history{
+    flex:1;
+
+    margin:0 10px;
+    padding:0;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+/* Scrollbar */
+
+.history::-webkit-scrollbar{
+    width:6px;
+}
+
+.history::-webkit-scrollbar-thumb{
+    background:#555;
+    border-radius:10px;
+}
+
+.history::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.history li{
+    list-style:none;
+
+    padding:12px 12px;
+
+    margin:6px 0;
+
+    cursor:pointer;
+
+    border-radius:10px;
+
+    position:relative;
+
+    word-break:break-word;
+
+    transition:.2s;
+}
+
+.history li:hover{
+    background:rgba(255,255,255,.06);
+}
+
+.highlighted{
+    background:rgba(255,255,255,.08);
+}
+
+.fa-trash{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+
+    opacity:0;
+
+    transition:.2s;
+}
+
+.history li:hover .fa-trash{
+    opacity:1;
+}
+
+.fa-trash:hover{
+    color:#ef4444 !important;
+}
+
+/* ===================== */
+/* Footer */
+/* ===================== */
+
+.sign{
+    flex-shrink:0;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding:15px;
+
+    text-align:center;
+
+    font-size:14px;
+}
+
+/* .logo {
     height: 25px;
     width: 25px;
     background-color: #fff;
     border-radius: 50%;
     object-fit: cover;
-}
+} */
 
-button span {
+/* button span {
     font-size: 20px;
-}
+} */
 
-button:hover {
+/* button:hover {
     background-color: rgba(180, 180, 180, 0.05);
-}
-
+} */
+/* 
 .history {
     margin: 10px;
     padding: 10px;
@@ -84,4 +200,4 @@ button:hover {
 .highlighted {
     background-color: rgba(180, 180, 180, 0.05);
     border-radius: 10px;
-}
+} */

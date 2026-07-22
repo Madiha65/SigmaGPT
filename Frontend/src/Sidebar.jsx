@@ -65,41 +65,45 @@ function Sidebar() {
     }
 
     return (
-        <section className="sidebar">
-        <button onClick={createNewChat}>
-    <img
-        src={blackLogo}
-        alt="gpt logo"
-        className="logo"
-    />
-    <span>
-        <i className="fa-solid fa-pen-to-square"></i>
-    </span>
-</button>
+       <section className="sidebar">
 
+    <button onClick={createNewChat}>
+        <img
+            src={blackLogo}
+            alt="gpt logo"
+            className="logo"
+        />
 
-            <ul className="history">
-                {
-                    allThreads?.map((thread, idx) => (
-                        <li key={idx}
-                            onClick={() => changeThread(thread.threadId)}
-                            className={thread.threadId === currThreadId ? "highlighted" : " "}
-                        >
-                            {thread.title}
-                            <i className="fa-solid fa-trash"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    deleteThread(thread.threadId);
-                                }}
-                            ></i>
-                        </li>
-                    ))
-                }
-            </ul>
-            <div className="sign">
-                <p>By ApnaCollege &hearts;</p>
-            </div>
-        </section>
+        <span>
+            <i className="fa-solid fa-pen-to-square"></i>
+        </span>
+    </button>
+
+    <ul className="history">
+        {allThreads?.map((thread, idx) => (
+            <li
+                key={idx}
+                onClick={() => changeThread(thread.threadId)}
+                className={thread.threadId === currThreadId ? "highlighted" : ""}
+            >
+                {thread.title}
+
+                <i
+                    className="fa-solid fa-trash"
+                    onClick={(e)=>{
+                        e.stopPropagation();
+                        deleteThread(thread.threadId);
+                    }}
+                ></i>
+            </li>
+        ))}
+    </ul>
+
+    <div className="sign">
+        <p>By ApnaCollege &hearts;</p>
+    </div>
+
+</section>
     )
 }
 
