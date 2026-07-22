@@ -7,7 +7,7 @@ import backVideo from "../assets/back.mp4";
 
 function Signup() {
   const navigate = useNavigate();
-
+ const API_URL = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +28,7 @@ function Signup() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/auth/signup`,
+        `${API_URL}/api/auth/signup`,
         {
           method: "POST",
           headers: {
