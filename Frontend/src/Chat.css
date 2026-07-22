@@ -1,3 +1,6 @@
+/* C:\Users\Msoom Ali\Downloads\SigmaGPT\Frontend\src\Chat.css */
+
+
 .chats {
     max-width: 700px;
     overflow-y: scroll;
@@ -17,7 +20,8 @@
 }
 
 .userMessage {
-    background-color: #323232;
+      background:var(--card);
+    color:var(--text);
     padding: 10px 20px;
     border-radius: 14px;
     margin-left: 15rem;

@@ -1,14 +1,41 @@
-* {
-    color: #ececec;
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* C:\Users\Msoom Ali\Downloads\SigmaGPT\Frontend\src\App.css */ 
+*{
+    color:var(--text);
+    font-family:Roboto,'Open Sans','Helvetica Neue',sans-serif;
 }
 
-body {
-    margin: 0;
-    padding: 0;
+body{
+    margin:0;
+    padding:0;
 }
 
-.app {
-    background-color: #212121;
-    display: flex;
+.app{
+    background:var(--bg);
+    display:flex;
+}
+
+:root{
+    --bg:#212121;
+    --sidebar:#171717;
+    --card:#2f2f2f;
+    --text:#ffffff;
+    --input:#2b2b2b;
+    --border:#3b3b3b;
+}
+
+body[data-theme="light"]{
+    --bg:#ffffff;
+    --sidebar:#f4f4f4;
+    --card:#ffffff;
+    --text:#111111;
+    --input:#efefef;
+    --border:#d8d8d8;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
 }
